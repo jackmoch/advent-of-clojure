@@ -1,0 +1,3 @@
+{:load-config-file?              true
+ :sort-ns-references?            true
+ :function-arguments-indentation :cursive}

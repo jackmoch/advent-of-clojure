@@ -1,0 +1,4 @@
+{:paths ["scripts"]
+ :tasks {:requires ([git-hooks :as gh])
+         hooks     {:doc  "Hook related commands"
+                    :task (apply gh/hooks *command-line-args*)}}}
