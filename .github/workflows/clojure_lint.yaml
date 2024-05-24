@@ -16,7 +16,7 @@ jobs:
 
       - name: CLJ Lint
         id: lint
-        uses: ../actions/clj-lint
+        uses: ./.github/actions/clj-lint
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           check-name: 'Clojure Linting Report'
