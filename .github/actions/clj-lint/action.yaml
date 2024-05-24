@@ -1,0 +1,24 @@
+name: 'Linting'
+description: 'Lint clj and edn files'
+inputs:
+  github_token:
+    description: 'Github token to report linter results back to check'
+    required: true
+  clj-kondo-config:
+    description: 'Arguments to be passed to clj-kondo'
+    required: true
+    default: '{:linters {:single-key-in {:level :warning} :shadowed-var {:level :warning}}}'
+  linting-targets:
+    description: 'Files and/or directories to be linted'
+    required: true
+    default: '["src" "scripts"]'
+  check-name:
+    description: 'Check name will be visible in Github Checks list'
+    default: 'clj-kondo check'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    CLJ_KONDO_CONFIG: ${{ inputs.clj-kondo-config }}
+    LINTING_TARGETS: ${{ inputs.linting-targets }}
+    CHECK_NAME: ${{ inputs.check-name }}

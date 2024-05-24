@@ -1,0 +1,22 @@
+name: Clojure CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      name: Test on Clojure
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: CLJ Lint
+        id: lint
+        uses: ../actions/clj-lint
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          check-name: 'Clojure Linting Report'
